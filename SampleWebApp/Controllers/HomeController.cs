@@ -33,5 +33,10 @@ namespace SampleWebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public void Validate(string json)
+        {
+
+        }
     }
 }

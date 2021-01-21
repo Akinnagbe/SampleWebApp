@@ -24,11 +24,18 @@
                 email: "demo@remita.net",
                 narration: "Payment Description",
                 amount: 150,
-                transactionId: "sdsfesawedwe",
+                transactionId: '@System.Guid.NewGuid().ToString("n")',
                 onSuccess: function (response) {
-                    //alert(response.e)
-                    console.log('callback Successful Response', response);
-                    console.log('callback Successful Response', JSON.parse(response.e));
+                   
+                    console.log('callback Successful Response', JSON.stringify(response.e));
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Validate", "Home")',
+                        data: response,
+                        success: null,
+                        contentType: "application/json",
+                        dataType: "json",
+                    });
                 },
                 onError: function (response) {
                     console.log('callback Error Response', response);
